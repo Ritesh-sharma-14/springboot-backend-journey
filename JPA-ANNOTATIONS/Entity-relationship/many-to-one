@@ -1,0 +1,22 @@
+@Entity
+public class Department {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String deptName;
+
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees;
+}
+
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String empName;
+
+    @ManyToOne
+    @JoinColumn(name = "dept_id")
+    private Department department;
+}
