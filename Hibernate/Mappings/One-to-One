@@ -1,0 +1,19 @@
+@Entity
+public class Students{
+ @Id
+ @GeneratedValue
+ private int id;
+ private String name;
+
+ @OneToOne(cascade=CascadeType.ALL)
+ @JoiinColumn(name="address_id")
+ private Address address;
+}
+
+@Entity 
+ public class Address{
+  @Id
+  @GeneratedValue
+  private int id;
+  private String City;
+}
