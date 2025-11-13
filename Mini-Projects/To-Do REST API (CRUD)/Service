@@ -1,1 +1,26 @@
+@Service
+public class TodoService {
+
+    @Autowired
+    private TodoRepository repo;
+
+    public List<Todo> getAllTodos() {
+        return repo.findAll();
+    }
+
+    public Todo createTodo(Todo todo) {
+        return repo.save(todo);
+    }
+
+    public Todo updateTodo(Long id, Todo todo) {
+        Todo existing = repo.findById(id).orElseThrow(() -> new RuntimeException("Todo not found"));
+        existing.setTitle(todo.getTitle());
+        existing.setCompleted(todo.isCompleted());
+        return repo.save(existing);
+    }
+
+    public void deleteTodo(Long id) {
+        repo.deleteById(id);
+    }
+}
 
