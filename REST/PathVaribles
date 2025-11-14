@@ -1,0 +1,4 @@
+@GetMapping("/books/{id}")
+public Book getBook(@PathVariable int id) {
+    return service.getBookById(id);
+}
