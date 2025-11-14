@@ -1,0 +1,4 @@
+@GetMapping("/books")
+public List<Book> getBooks(@RequestParam(required = false) String author) {
+    return service.getBooks(author);
+}
